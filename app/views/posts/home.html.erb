@@ -21,13 +21,13 @@
             <tr>
                 <td><%= post.id %></td>
                 <td><%= post.title %></td>
-                <td><%= post.startdate %></td>
-                <td><%= post.enddate %></td>
-                <td><%= post.allday %></td>
-                <td><%= post.updated_at %></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= l post.startdate %></td>
+                <td><%= l post.enddate %></td>
+                <td><%= post.allday ? '○': '' %></td>
+                <td><%= l post.updated_at, format: :short %></td>
+                <td><%= link_to "詳細", '#', class:"text-decoration-none" %></td>
+                <td><%= link_to "編集", '#', class:"text-decoration-none" %></td>
+                <td><%= link_to "削除", '#', class:"text-decoration-none" %></td>
             </tr>
         <% end %>
     </tbody>
