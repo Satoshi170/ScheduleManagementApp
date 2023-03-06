@@ -1,37 +1,41 @@
-<div class="my-2 container-fluid d-flex flex-row justify-content-between">
-    <h3>予定一覧</h3>
-    <%= link_to "新規追加", 'posts/create', class:"btn btn-dark" %>
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">タイトル</th>
-            <th scope="col">開始日</th>
-            <th scope="col">終了日</th>
-            <th scope="col">終日</th>
-            <th scope="col">更新日時</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @posts.each do |post| %>
+<% provide(:title, "ホーム") %>
+<div class = "container">
+    <div class="container-fluid d-flex flex-row justify-content-between my-3">
+        <h4>予定一覧</h4>
+        <%= link_to "新規追加", '/new', class:"btn btn-dark" %>
+    </div>
+    <table class="table table-striped shadow-sm">
+        <thead>
             <tr>
-                <td><%= post.id %></td>
-                <td><%= post.title %></td>
-                <td><%= l post.startdate %></td>
-                <td><%= l post.enddate %></td>
-                <td><%= post.allday ? '○': '' %></td>
-                <td><%= l post.updated_at, format: :short %></td>
-                <td><%= link_to "詳細", '#', class:"text-decoration-none" %></td>
-                <td><%= link_to "編集", '#', class:"text-decoration-none" %></td>
-                <td><%= link_to "削除", '#', class:"text-decoration-none" %></td>
+                <th scope="col">ID</th>
+                <th scope="col">タイトル</th>
+                <th scope="col">開始日</th>
+                <th scope="col">終了日</th>
+                <th scope="col">終日</th>
+                <th scope="col">更新日時</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
-<footer>    
-</footer>        
-<p>Find me in app/views/posts/home.html.erb</p>
+        </thead>
+        <tbody>
+            <% @posts.each do |post| %>
+                <tr>
+                    <td><%= post.id %></td>
+                    <td><%= post.title %></td>
+                    <td><%= l post.startdate %></td>
+                    <td><%= l post.enddate %></td>
+                    <td><%= post.allday ? '○': '' %></td>
+                    <td><%= l post.updated_at, format: :short %></td>
+                    <td><%= link_to "詳細", "#{post.id}/show", class:"text-decoration-none" %></td>
+                    <td><%= link_to "編集", "#{post.id}/edit", class:"text-decoration-none" %></td>
+                    <td><%= link_to "削除", "#{post.id}/destroy", class:"text-decoration-none" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <footer class = "card mt-5 p-3 container-fluid d-flex flex-row justify-content-between shadow-sm">
+        <p class = "card-text my-2">予定合計 <span class="h4"><%= @posts.count %></span>件</p>
+        <p class = "card-text my-2 text-muted">本日の日付 <%= l Date.current %></p>
+    </footer>
+</div>

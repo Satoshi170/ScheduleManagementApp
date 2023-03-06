@@ -1,0 +1,8 @@
+<% provide(:title, "詳細") %>
+
+<div class = "container">
+    <%= link_to "← 一覧に戻る", '/home', class:"text-decoration-none" %>
+    <h4 class ="my-2"><%= @post.title %></h4>
+    <p>Find me in app/views/posts/show.html.erb</p>
+    <p><%= @post.content %></p>
+</div>
