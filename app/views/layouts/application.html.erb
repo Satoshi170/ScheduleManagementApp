@@ -12,11 +12,13 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid justify-content-center">
-        <%= link_to "スケジュール管理アプリ", '/', class:"navbar-brand justify-content-center" %>
-      </div>
-    </nav>
+    <header>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid justify-content-center">
+          <%= link_to "スケジュール管理アプリ", '/', class:"navbar-brand justify-content-center" %>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
