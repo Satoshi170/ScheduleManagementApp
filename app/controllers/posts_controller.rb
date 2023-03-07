@@ -14,12 +14,12 @@ class PostsController < ApplicationController
 
   #スケジュールの詳細ページ
   def show
-    @post = Post.find_by(params[:id])
+    @post = Post.find_by(id: params[:id])
   end
 
   #スケジュールの編集
   def edit
-    @post = Post.find_by(params[:id])
+    @post = Post.find_by(id: params[:id])
   end
 
   def update
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   #スケジュールの削除
   def destroy
-    @post = Post.find_by(params[:id])
+    @post = Post.find_by(id: params[:id])
   end
 
 end
