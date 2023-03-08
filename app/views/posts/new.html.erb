@@ -1,1 +1,29 @@
 <% provide(:title, "新規追加") %>
+
+<div class = "container">
+    <h4 class = "my-3">予定の新規追加</h4>
+    <%= form_with model: @post do |form| %>
+        <% if @post.errors.any? %>
+            <div>
+                <ul>
+                    <% @post.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div>
+            <%= form.label :title %><br>
+            <%= form.text_field :title %><br>
+            <%= form.label :startdate %><br>
+            <%= form.text_field :startdate %><br>
+            <%= form.label :enddate %><br>
+            <%= form.text_field :enddate %><br>
+            <%= form.label :allday %><br>
+            <%= form.text_field :allday %><br>
+            <%= form.label :content %><br>
+            <%= form.text_field :content %><br>
+            <%= form.submit %>
+        </div>
+    <% end %>
+</div>

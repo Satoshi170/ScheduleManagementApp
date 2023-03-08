@@ -1,28 +1,28 @@
 <% provide(:title, "詳細") %>
 
-<div class = "container">
-    <%= link_to "← 一覧に戻る", '/home', class:"text-decoration-none" %>
-    <div class = "container-fluid d-flex flex-row justify-content-between my-3">
+<div class="container">
+    <%= link_to "← 一覧に戻る", '/', class:"text-decoration-none" %>
+    <div class="container-fluid d-flex flex-row justify-content-between my-3">
         <h4><%= @post.title %></h4>
         <%= link_to "編集", '/edit', class:"btn btn-dark" %>
     </div>
 
-    <table class= "table table-bordered shadow-sm">
+    <table class="table table-bordered shadow-sm">
         <tbody>
             <tr>
-                <td class = "bg-light">開始日</td>
+                <td class="bg-light">開始日</td>
                 <td><%= l @post.startdate %></td>
             </tr>
             <tr>
-                <td class = "bg-light">終了日</td>
+                <td class="bg-light">終了日</td>
                 <td><%= l @post.enddate %></td>
             </tr>
             <tr>
-                <td class = "bg-light">終日</td>
+                <td class="bg-light">終日</td>
                 <td><%= @post.allday ? '○': '' %></td>
             </tr>
             <tr>
-                <td class = "bg-light">スケジュールメモ</td>
+                <td class="bg-light">スケジュールメモ</td>
                 <td><%= @post.content %></td>
             </tr>
         </tbody>

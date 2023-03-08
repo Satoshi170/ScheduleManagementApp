@@ -1,32 +1,26 @@
 class Post < ApplicationRecord
-    validates :title,
-        presence: true,
-        length: { maximum: 20}
+    validates :title, presence: true, length: { maximum: 20}
     
-    validates :startdate,
-        presence: true
+    validates :startdate, presence: true
+    validate :start_check
     
-    validate :start_check    
-    
-    validates :enddate,
-        presence: true
+    validates :enddate, presence: true
     
     validate :start_end_check
 
-    validates :content,
-        length: { maximum: 500}
+    validates :content, length: { maximum: 500}
     
     attribute :allday, :boolean, default: false
 
     def start_check
-        errors.add(:startdate, "は過去の日付で登録できません。") 
-        unless self.startdate >= Date.current
-        end
+        if startdate.present? && Date.current > startdate
+            errors.add(:startdate, "は過去の日付を登録できません")
+        end    
     end
 
     def start_end_check
-        errors.add(:enddate, "は開始日より前の日付は登録できません。") 
-        unless self.enddate >= self.startdate
+        if enddate.present? && startdate > enddate
+            errors.add(:enddate, "は開始日より前の日付は登録できません")
         end
-    end
+    end    
 end
