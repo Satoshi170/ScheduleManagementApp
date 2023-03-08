@@ -1,6 +1,7 @@
 <% provide(:title, "新規追加") %>
 
 <div class = "container">
+    <%= link_to "← 一覧に戻る", '/', class:"text-decoration-none" %>
     <h4 class = "my-3">予定の新規追加</h4>
     <%= form_with model: @post do |form| %>
         <% if @post.errors.any? %>

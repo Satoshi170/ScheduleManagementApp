@@ -36,6 +36,12 @@ class PostsController < ApplicationController
   # スケジュールの削除
   def destroy
     @post = Post.find_by(id: params[:id])
+    if @post.destroy
+      redirect_to '/', notice: "削除に成功しました"
+    else
+      flash.now[:danger] = "削除に失敗しました"
+      render '/'
+    end
   end
 
   private
