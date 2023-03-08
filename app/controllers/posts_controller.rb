@@ -13,8 +13,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to '/'
+      redirect_to '/', flash: {success: "新規追加に成功しました"}
     else
+      flash.now[:danger] = "新規追加に失敗しました"
       render 'new', status: :unprocessable_entity
     end
   end
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     if @post.destroy
-      redirect_to '/', notice: "削除に成功しました"
+      redirect_to '/', flash: {success: "削除に成功しました"}
     else
       flash.now[:danger] = "削除に失敗しました"
       render '/'
