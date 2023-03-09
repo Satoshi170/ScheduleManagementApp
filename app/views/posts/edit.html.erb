@@ -1,1 +1,42 @@
-<h1>edit view</h1>
+<% provide(:title, "編集") %>
+
+<div class = "container">
+    <%= link_to "← 一覧に戻る", '/', class:"text-decoration-none" %>
+    <h4 class = "my-3">予定の編集</h4>
+    <%= form_with model: @post do |form| %>
+        <% if @post.errors.any? %>
+            <div>
+                <ul>
+                    <% @post.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <form>
+            <div class="form-group text-center">
+                <%= form.label "タイトル" %><br>
+                <%= form.text_field :title %>
+            </div>
+            <div class="form-group text-center">
+                <%= form.label "開始日" %><br>
+                <%= form.text_field :startdate, class: "datepicker" %>
+            </div>
+            <div class="form-group text-center">    
+                <%= form.label "終了日" %><br>
+                <%= form.text_field :enddate, class: "datepicker" %>
+            </div>
+            <div class="form-group text-center">
+                <%= form.label "スケジュールメモ" %><br>
+                <%= form.text_area :content %>
+            </div>
+            <div class="form-group text-center">    
+                <%= form.label "全日" %>
+                <%= form.check_box :allday, :as => :boolean %>
+            </div>
+            <div class="text-center mt-3">
+                <%= form.submit "作成する",class: "btn btn-dark" %>
+            </div>
+        </form>
+    <% end %>
+</div>

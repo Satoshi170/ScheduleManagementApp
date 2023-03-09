@@ -31,7 +31,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    
+    @post = Post.find_by(id: params[:id])
+    if @post.update
+      redirect_to '/', flash: {success: "更新に成功しました"}
+    else
+      flash.now[:danger] = "更新に失敗しました"
+      render '/'
+    end
   end
 
   # スケジュールの削除

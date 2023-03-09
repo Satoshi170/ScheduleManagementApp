@@ -28,9 +28,9 @@
                     <td><%= l post.enddate %></td>
                     <td><%= post.allday ? '○': '' %></td>
                     <td><%= l post.updated_at, format: :short %></td>
-                    <td><%= link_to "詳細", "#{post.id}/show", class:"text-decoration-none" %></td>
-                    <td><%= link_to "編集", "#{post.id}/edit", class:"text-decoration-none" %></td>
-                    <td><%= link_to "削除", "#{post.id}/destroy",method: :delete, class:"text-decoration-none" %></td>
+                    <td><%= link_to "詳細", "posts/#{post.id}", class:"text-decoration-none" %></td>
+                    <td><%= link_to "編集", "posts/#{post.id}/edit", class:"text-decoration-none" %></td>
+                    <td><%= link_to "削除", "posts/#{post.id}", method: :delete, data: { confirm: '予定を削除しますか？'}, class:"text-decoration-none" %></td>
                 </tr>
             <% end %>
         </tbody>
