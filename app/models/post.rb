@@ -1,15 +1,15 @@
 class Post < ApplicationRecord
-    validates :title, presence: true, length: { maximum: 20}
-    
+  validates :title, presence: true, length: { maximum: 20}
+
     validates :startdate, presence: true
     validate :start_check
-    
+
     validates :enddate, presence: true
-    
+
     validate :start_end_check
 
     validates :content, length: { maximum: 500}
-    
+
     attribute :allday, :boolean, default: false
 
     def start_check
